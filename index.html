@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cite Check</title>
+<meta name="description" content="A link is not proof. Cite Check uses plain code to test that each quote in an AI answer is really in its source.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Cite Check</h1>
+    <p class="lede">A link is not proof. This checks, in plain code, that each quote in an AI answer is really in its source.</p>
+  </header>
+
+  <section aria-labelledby="result-h">
+    <h2 id="result-h" class="sr">Result</h2>
+    <p id="summary" class="summary" role="status"></p>
+    <p class="note" id="sample-note">Sample answer, written for this demo. Two errors were planted on purpose.</p>
+    <p class="question" id="question"></p>
+    <ol id="cards" class="cards"></ol>
+  </section>
+
+  <section class="try">
+    <details id="try">
+      <summary>Try your own</summary>
+      <div class="try-body">
+        <p>Paste an answer and its sources in this plain format. Separate blocks with a line of three dashes.</p>
+        <pre class="format" aria-label="Format example">CLAIM: what the answer says
+SOURCE: the source ID
+QUOTE: words copied from the source
+---
+ID: the source ID
+TITLE: page name
+URL: https://example.gov/page
+TEXT: the full source text</pre>
+        <label for="answer-in">Answer</label>
+        <textarea id="answer-in" rows="10" spellcheck="false" autocomplete="off"></textarea>
+        <label for="sources-in">Sources</label>
+        <textarea id="sources-in" rows="10" spellcheck="false" autocomplete="off"></textarea>
+        <div class="buttons">
+          <button type="button" id="check" class="primary">Check</button>
+          <button type="button" id="reset">Reset to sample</button>
+        </div>
+        <p id="error" class="error" role="alert" hidden></p>
+      </div>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <p>A prototype for Next Generation Medicine, built by Arnold Ikpemosi Adeyemi. Sample text only, not medical advice. Runs in your browser; nothing is sent anywhere.</p>
+  <p><a href="https://ikpemosi.work">ikpemosi.work</a> &middot; <a href="https://github.com/IkpemosiArnold/cite-check">Source on GitHub</a></p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
