@@ -31,7 +31,7 @@ ES modules do not load from `file://`, so serve the folder:
 python3 -m http.server 8000
 ```
 
-Then open http://localhost:8000. The page makes no network calls.
+Then open http://localhost:8000. Apart from loading two typefaces from Google Fonts, the page makes no network calls. Nothing you paste leaves the browser.
 
 "Try your own" takes plain text. Separate blocks with a line of three dashes.
 

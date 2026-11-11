@@ -2,34 +2,50 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cite Check</title>
-<meta name="description" content="A link is not proof. Cite Check uses plain code to test that each quote in an AI answer is really in its source.">
+<meta name="description" content="A link doesn’t mean the source said it. Cite Check uses plain code to test that each quote in an AI answer is really in its source.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcfcfc">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e0f11">
 <link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="g-pass" viewBox="0 0 16 16"><path d="M3.25 8.5l3 3 6.5-7"/></symbol>
+  <symbol id="g-fail" viewBox="0 0 16 16"><path d="M4.25 4.25l7.5 7.5M11.75 4.25l-7.5 7.5"/></symbol>
+  <symbol id="g-chev" viewBox="0 0 16 16"><path d="M6 3.5l4.5 4.5L6 12.5"/></symbol>
+</svg>
+
 <main>
-  <header>
-    <h1>Cite Check</h1>
-    <p class="lede">A link is not proof. This checks, in plain code, that each quote in an AI answer is really in its source.</p>
+  <header class="head">
+    <p class="wordmark">Cite Check</p>
+    <h1>A link doesn’t mean the source said it.</h1>
+    <p class="note" id="sample-note">Sample answer with two planted errors.</p>
   </header>
 
-  <section aria-labelledby="result-h">
+  <section class="result" aria-labelledby="result-h">
     <h2 id="result-h" class="sr">Result</h2>
     <p id="summary" class="summary" role="status"></p>
-    <p class="note" id="sample-note">Sample answer, written for this demo. Two errors were planted on purpose.</p>
-    <p class="question" id="question"></p>
-    <ol id="cards" class="cards"></ol>
+    <ol id="cards" class="rows"></ol>
   </section>
 
   <section class="try">
     <details id="try">
-      <summary>Try your own</summary>
+      <summary class="disclosure">
+        <span>Try your own</span>
+        <svg class="chev" aria-hidden="true"><use href="#g-chev"/></svg>
+      </summary>
       <div class="try-body">
-        <p>Paste an answer and its sources in this plain format. Separate blocks with a line of three dashes.</p>
-        <pre class="format" aria-label="Format example">CLAIM: what the answer says
+        <p class="try-intro" id="question"></p>
+        <details class="format">
+          <summary>Format</summary>
+          <p>Plain text. Separate blocks with a line of three dashes.</p>
+          <pre aria-label="Format example">CLAIM: what the answer says
 SOURCE: the source ID
 QUOTE: words copied from the source
 ---
@@ -37,23 +53,33 @@ ID: the source ID
 TITLE: page name
 URL: https://example.gov/page
 TEXT: the full source text</pre>
-        <label for="answer-in">Answer</label>
-        <textarea id="answer-in" rows="10" spellcheck="false" autocomplete="off"></textarea>
-        <label for="sources-in">Sources</label>
-        <textarea id="sources-in" rows="10" spellcheck="false" autocomplete="off"></textarea>
-        <div class="buttons">
-          <button type="button" id="check" class="primary">Check</button>
-          <button type="button" id="reset">Reset to sample</button>
+        </details>
+        <div class="boxes">
+          <div class="box">
+            <label for="answer-in">Answer</label>
+            <textarea id="answer-in" rows="5" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off"></textarea>
+          </div>
+          <div class="box">
+            <label for="sources-in">Sources</label>
+            <textarea id="sources-in" rows="5" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off"></textarea>
+          </div>
         </div>
         <p id="error" class="error" role="alert" hidden></p>
+        <div class="actions">
+          <button type="button" id="check" class="primary">Check</button>
+          <button type="button" id="reset" class="textlink">Reset to sample</button>
+        </div>
       </div>
     </details>
   </section>
 </main>
 
 <footer>
-  <p>A prototype for Next Generation Medicine, built by Arnold Ikpemosi Adeyemi. Sample text only, not medical advice. Runs in your browser; nothing is sent anywhere.</p>
-  <p><a href="https://ikpemosi.work">ikpemosi.work</a> &middot; <a href="https://github.com/IkpemosiArnold/cite-check">Source on GitHub</a></p>
+  <p>A prototype for Next Generation Medicine, built by Arnold Ikpemosi Adeyemi. Sample text only, not medical advice. Runs in your browser; nothing you paste leaves it.</p>
+  <p class="links">
+    <a href="https://ikpemosi.work">ikpemosi.work</a>
+    <a href="https://github.com/IkpemosiArnold/cite-check">Source on GitHub</a>
+  </p>
 </footer>
 <script type="module" src="app.js"></script>
 </body>
